@@ -1,21 +1,25 @@
-// Function to hide view counts
 function hideViewCount() {
-  const viewCounts = document.querySelectorAll(
-    "#metadata-line > span:nth-child(3)"
+  const currentVideoViewCount = document.querySelector(
+    "#info > span:nth-child(1)"
   );
-  viewCounts.forEach((viewCount) => {
-    viewCount.style.display = "none";
-  });
+  const spacingElement = document.querySelector("#info > span:nth-child(2)");
+  if (currentVideoViewCount) {
+    currentVideoViewCount.style.display = "none";
+    spacingElement.style.display = "none";
+  }
 }
 
-// Function to show view counts
 function showViewCount() {
-  const viewCounts = document.querySelectorAll(
-    "#metadata-line > span:nth-child(3)"
+  const currentVideoViewCount = document.querySelector(
+    "#info > span:nth-child(1)"
   );
-  viewCounts.forEach((viewCount) => {
-    viewCount.style.display = ""; // Clear any inline styles
-  });
+  const spacingElement = document.querySelector("#info > span:nth-child(2)");
+  if (currentVideoViewCount) {
+    currentVideoViewCount.style.display = ""; // Clears any inline style hiding the view counts
+  }
+  if (spacingElement) {
+    spacingElement.style.display = ""; // Clears any inline style hiding the view counts
+  }
 }
 
 // Apply view settings based on stored preference

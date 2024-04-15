@@ -12,6 +12,7 @@
       {
         "matches": ["*://*.youtube.com/*"],
         "js": ["content.js"],
+        "css": ["hide-views.css"],
         "run_at": "document_end"
       }
     ],

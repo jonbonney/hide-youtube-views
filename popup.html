@@ -7,9 +7,21 @@
     <style>
         body {
             width: 200px;
-            padding: 10px;
+            padding: 8px;
             font-family: Arial, sans-serif;
             text-align: center;
+            border-width: 4px;
+            border-style: solid;
+            border-color: #4285f4;
+            margin: 0;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 16px;
         }
         button {
             padding: 10px 20px;
@@ -18,7 +30,7 @@
             background-color: #4285f4;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             outline: none;
         }
         button:hover {
@@ -27,6 +39,9 @@
     </style>
 </head>
 <body>
+    <h1>Hide YouTube Views</h1>
+    <p>Click the button below to toggle view count on actively playing video.</p>
+    <p>All other view counts are always hidden.</p>
     <button id="toggleButton">Toggle View Count</button>
     <script src="popup.js"></script>
 </body>
