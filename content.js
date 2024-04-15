@@ -8,11 +8,32 @@ function hideViewCount() {
   });
 }
 
+// Function to show view counts
+function showViewCount() {
+  const viewCounts = document.querySelectorAll(
+    "#metadata-line > span:nth-child(3)"
+  );
+  viewCounts.forEach((viewCount) => {
+    viewCount.style.display = ""; // Clear any inline styles
+  });
+}
+
+// Apply view settings based on stored preference
+function applyViewSettings() {
+  chrome.storage.sync.get("hideViews", (data) => {
+    if (data.hideViews) {
+      hideViewCount();
+    } else {
+      showViewCount();
+    }
+  });
+}
+
 // MutationObserver to handle dynamic content loading
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.addedNodes.length) {
-      hideViewCount(); // Call hide function when new nodes are added
+      applyViewSettings(); // Apply settings when new nodes are added
     }
   });
 });
@@ -23,8 +44,12 @@ observer.observe(document.body, {
   subtree: true,
 });
 
-// Initial call to ensure it runs on page load as well
+// Initially hide views
 hideViewCount();
 
-// Alert to test that the script is loaded
-alert("The extension is loaded and running on YouTube!");
+// Listen for messages from the popup
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.hasOwnProperty("hideViews")) {
+    applyViewSettings();
+  }
+});
