@@ -22,3 +22,19 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateButtonText(button, hideViews) {
   button.textContent = hideViews ? "Show Views" : "Hide Views";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const githubLink = document.getElementById("githubLink");
+  if (githubLink) {
+    githubLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the default anchor behavior
+      const url = this.href;
+      chrome.tabs.create({ url: url }); // Open the link in a new tab
+    });
+  }
+
+  const toggleButton = document.getElementById("toggleButton");
+  toggleButton.addEventListener("click", function () {
+    // Assuming you have some code here to send a message to content.js
+  });
+});

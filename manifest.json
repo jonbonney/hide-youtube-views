@@ -3,7 +3,7 @@
     "name": "Hide YouTube Views",
     "version": "1.0",
     "description": "This extension hides the view counts on YouTube videos.",
-    "permissions": ["storage"],
+    "permissions": ["storage", "tabs"],
     "host_permissions": ["*://*.youtube.com/*"],
     "action": {
       "default_popup": "popup.html"
